@@ -3,9 +3,11 @@ import random
 # Possible choices
 choices = ["rock", "paper", "scissors"]
 
+score = 0
+
 # Get user name
-user = input('Enter your name: ')
-print('Hello ' + user)
+username = input('Enter your name: ')
+print('Hello ' + username)
 
 # Open ratings file
 rating_txt = open('rating.txt', 'r')
@@ -15,9 +17,13 @@ rating_list = rating_txt.read().splitlines()
 rating_dict = {}
 
 for entry in rating_list:
-    user = entry.split(' ')[0]
+    name = entry.split(' ')[0]
     score = int(entry.split(' ')[1])
-    rating_dict.update({user: score})
+    rating_dict.update({name: score})
+
+# If user has previous rating, set that as current score
+if username in rating_dict.keys():
+    score = rating_dict[username]
 
 
 while True:
