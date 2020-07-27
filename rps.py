@@ -7,11 +7,12 @@ score = 0
 
 # Get user name
 username = input('Enter your name: ')
-print('Hello ' + username)
+print('Hello, ' + username)
 
 # Open ratings file
 rating_txt = open('rating.txt', 'r')
 rating_list = rating_txt.read().splitlines()
+rating_txt.close()
 
 # Convert ratings into dictionary
 rating_dict = {}
@@ -42,6 +43,10 @@ while True:
     ):
         print("Bye!")
         break
+    elif (
+        user_input == "!rating"
+    ):
+        print('Your rating: ' + str(score))
     # Invalid user input
     elif (
         user_input not in choices
@@ -53,6 +58,7 @@ while True:
         (user_input == "rock" and computer_choice == "scissors") or
         (user_input == "paper" and computer_choice == "rock")
     ):
+        score += 100
         print(win_output)
     # Losing conditions
     elif (
@@ -67,4 +73,5 @@ while True:
         (user_input == "scissors" and computer_choice == "scissors") or
         (user_input == "rock" and computer_choice == "rock")
     ):
+        score += 50
         print(tie_output)
