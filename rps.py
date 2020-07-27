@@ -3,6 +3,22 @@ import random
 # Possible choices
 choices = ["rock", "paper", "scissors"]
 
+# Get user name
+user = input('Enter your name: ')
+print('Hello ' + user)
+
+# Open ratings file
+rating_txt = open('rating.txt', 'r')
+rating_list = rating_txt.read().splitlines()
+
+# Convert ratings into dictionary
+rating_dict = {}
+
+for entry in rating_list:
+    user = entry.split(' ')[0]
+    score = int(entry.split(' ')[1])
+    rating_dict.update({user: score})
+
 
 while True:
     # Choices for this round
